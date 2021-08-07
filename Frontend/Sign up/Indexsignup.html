@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sing Up</title>
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+
+  <body>
+    <div class="signup-box">
+      <h1>Sign Up</h1>
+      <form onsubmit="return false">
+        <label for="first">First Name</label>
+        <input type="text" id="first" placeholder="first name" />
+        <label for="last">Last Name</label>
+        <input type="text" id="last" placeholder="last name" />
+        <label for="">Birthday</label>
+        <input type="date" id="date" />
+       
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="example@gmail.com" />
+        <label for="phone">Phone Number</label>
+        <input type="number" id="phone" name="phone" />
+        <label for="password">Password</label>
+        <input type="passoword" id="password" placeholder="password">
+        <label for="subject">Subject</label>
+        <select name="subject" id="subject">
+          <option value="aa">Choose option</option>
+          <option value="ff">ff</option>
+          <option value="rr">rr</option>
+          <option value="tt">ttt</option>
+        </select>
+        <label for="submit"></label>
+        <button  type="button" onclick="add()"  class="button" style="vertical-align: middle">
+          <span>Hover </span>
+        </button>
+      </form>
+    </div>
+    <script>
+      function add(){
+          // Post a user
+          var url = "http://127.0.0.1:3001/admins";
+          var data = {};
+          // récupération des données dans la variable data .
+          data.first = document.getElementById("first").value;
+          data.last = document.getElementById("last").value;
+          data.date = document.getElementById("date").value;
+          data.email = document.getElementById("email").value;
+          data.phone = document.getElementById("phone").value;
+          data.password = document.getElementById("password").value;
+          data.subject = document.getElementById("subject").value;
+
+
+          var json = JSON.stringify(data);
+          var xhr = new XMLHttpRequest(); // definir une request de connection standard js
+          xhr.open("POST", url, true); // choisir la méthode post comme méthode d'accès au serveur pour avoir la possibilité d'envoyer les données au serveur .
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function () {
+              var admins = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "200") {
+                  console.table(admins);
+                  alert("Admin Added");
+                  location.replace("../index.html");
+              } else {
+                  alert(admins.message);
+                  console.table(admins);
+              }
+          }
+          xhr.send(json);
+      }
+  </script>
+  </body>
+</html>

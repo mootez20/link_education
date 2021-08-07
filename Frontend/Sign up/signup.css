@@ -1,0 +1,114 @@
+body {
+  background-image: url(./image/cool-background.png);
+  background-repeat: round;
+  font-family: "Roboto", sans-serif;
+}
+.signup-box {
+  width: 380px;
+  height: 710px;
+  margin: auto;
+  margin-top: 60px;
+
+  background-color: white;
+  border-radius: 3px;
+}
+h1 {
+  text-align: center;
+  padding-top: 15px;
+  color: #e74c3c;
+}
+form {
+  width: 300px;
+  padding-left: 20px;
+}
+form label {
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+}
+form input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
+}
+input[type="button"] {
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  border: none;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 18px;
+}
+
+input[type="radio"],
+input.radio {
+  vertical-align: text-top;
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  top: 2px;
+}
+
+.radio {
+  display: inline-block;
+  padding-right: 70px;
+  font-size: 18px;
+
+  color: black;
+}
+.radio input {
+  cursor: pointer;
+}
+
+select {
+  width: 50%;
+  height: 30px;
+}
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  width: 311px;
+  float: none;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}

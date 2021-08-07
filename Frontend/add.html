@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form onsubmit="return false">
+            Username:
+            <input type="text" id="username" placeholder="Enter Your Username"><br>
+            Email:
+            <input type="email" id="email" placeholder="Enter Your Email"><br>
+            Password:
+            <input type="password" id="password" placeholder="Enter Your Password"><br>
+            <input type="submit" onclick="register()" value="Add">
+        </form>
+        
+        <script>
+            function register(){
+                // Post a user
+                var url = "http://127.0.0.1:3000/admins";
+                var data = {};
+                // récupération des données dans la variable data .
+                data.username = document.getElementById("username").value;
+                data.email = document.getElementById("email").value;
+                data.password = document.getElementById("password").value;
+                var json = JSON.stringify(data);
+                var xhr = new XMLHttpRequest(); // definir une request de connection standard js
+                xhr.open("POST", url, true); // choisir la méthode post comme méthode d'accès au serveur pour avoir la possibilité d'envoyer les données au serveur .
+                xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+                xhr.onload = function () {
+                    var admins = JSON.parse(xhr.responseText);
+                    if (xhr.readyState == 4 && xhr.status == "200") {
+                        console.table(admins);
+                        alert("Admin Registered");
+                        location.replace("index.html");
+                    } else {
+                        alert(admins.message);
+                        console.table(admins);
+                    }
+                }
+                xhr.send(json);
+            }
+        </script>
+    </body>
+</html>
